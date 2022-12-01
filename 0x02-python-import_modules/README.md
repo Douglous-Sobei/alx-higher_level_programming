@@ -1,6 +1,6 @@
 # 0x02. Python - import & modules
 ## Learning Objectives
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
+At the end of this project, I am expected to be able to explain to anyone, without the help of Google:
 
 ### General
 - Why Python programming is awesome
@@ -14,10 +14,10 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 ## Requirements
 ### General
 - Allowed editors: vi, vim, emacs
-- All your files will be interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.8.5)
-- All your files should end with a new line
-- The first line of all your files should be exactly #!/usr/bin/python3
+- All my files will be interpreted/compiled on Ubuntu 20.04 LTS using python3 (version 3.8.5)
+- All my files should end with a new line
+- The first line of all my files should be exactly #!/usr/bin/python3
 - A README.md file, at the root of the folder of the project, is mandatory
-- Your code should use the pycodestyle (version 2.8.*)
-- All your files must be executable
-- The length of your files will be tested using wc
+- My code should use the pycodestyle (version 2.8.*)
+- All my files must be executable
+- The length of my files will be tested using wc
