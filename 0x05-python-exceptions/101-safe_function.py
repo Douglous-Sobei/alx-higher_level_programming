@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-from sys import stderr
+import sys
 
-def safe_function(fct, *args):
+
+def safe_print_integer_err(value):
     try:
-        return fct(*args)
-    except (ZeroDivisionError, IndexError) as e:
-        print("Exception: {}".format(e), file=stderr)
-        return None
+        print("{:d}".format(value))
+        return True
+    except (ValueError, TypeError) as e:
+        print("Exception: {}".format(e), file=sys.stderr)
+        return False
