@@ -1,42 +1,49 @@
 #!/usr/bin/python3
-"""Defines a Rectangle"""
+"""
+Defines Rectangle class
+"""
+
+
 class Rectangle:
-    """Represent a rectangle""" 
+    """ Rectangle """
     def __init__(self, width=0, height=0):
-        """
-        This Rectangle class has private instance attributes _width and _height, and defines properties width and height to access and set these attributes. The __init__ method is the constructor for the class and is called when you create a new Rectangle object. The area and perimeter methods return the area and perimeter of the rectangle, respectively.
-        """
-        self.width = width
+        """ initizie width and height """
         self.height = height
-    
+        self.width = width
+
     @property
     def width(self):
-        return self._width
-    
+        """ width getter """
+        return self.__width
+
     @width.setter
     def width(self, value):
-        if not isinstance(value, int):
+        """ width setter """
+        if type(value) is not int:
             raise TypeError("width must be an integer")
         if value < 0:
             raise ValueError("width must be >= 0")
-        self._width = value
-    
+        self.__width = value
+
     @property
     def height(self):
-        return self._height
-    
+        """ height getter """
+        return self.__height
+
     @height.setter
     def height(self, value):
-        if not isinstance(value, int):
+        """ height setter """
+        if type(value) is not int:
             raise TypeError("height must be an integer")
         if value < 0:
             raise ValueError("height must be >= 0")
-        self._height = value
-    
+        self.__height = value
+
     def area(self):
-        return self.width * self.height
-    
+        """ calculates and returns area """
+        return self.__width * self.__height
+
     def perimeter(self):
-        if self.width == 0 or self.height == 0:
+        """ calculates the perimeter of a Rectangle """
+        if self.__width == 0 or self.__height == 0:
             return 0
-        return 2 * (self.width + self.height)
