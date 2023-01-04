@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""locked class"""
 class LockedClass:
 
 """No attribute creation unless attribute = firs_name"""
