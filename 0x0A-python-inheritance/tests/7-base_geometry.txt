@@ -1,88 +1,78 @@
-==========================
-How to use 7-base_geometry
-==========================
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-This modue defines class BaseGeometry
 
-::
-    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
-    >>> bg = BaseGeometry()
-    >>> type(bg)
-    <class '7-base_geometry.BaseGeometry'>
-::
-
-Testing both functions
-
-For area:
+>>> bg = BaseGeometry()
 >>> bg.area()
 Traceback (most recent call last):
-    ...
+	...
 Exception: area() is not implemented
 
-Correct value for integer validator
->>>bg.integer_validator('age', 23)
+>>> bg.integer_validator("Silvia", 20)
 
-Wrong second parameter
->>>bg.integer_validator('age', '17')
-Traceback (most recent call last)
-    ...
-TypeError: age must be an integer
 
->>>bg.integer_validator('age', 'yes')
-Traceback (most recent call last)
-    ...
-TypeError: age must be an integer
+Check when value is not an int
 
->>> bg.integer_validator('age', True)
-Traceback (most recent call last)
-    ...
-TypeError: age must be an integer
+>>> bg.integer_validator("Silvia", "hi")
+Traceback (most recent call last):
+	...
+TypeError: Silvia must be an integer
 
->>> bg.integer_validator('age', 6.9)
-Traceback (most recent call last)
-    ...
-TypeError: age must be an integer
+>>> bg.integer_validator("", True)
+Traceback (most recent call last):
+	...
+TypeError:  must be an integer
 
->>> bg.integer_validator('age', float('inf'))
-Traceback (most recent call last)
-    ...
-TypeError: age must be an integer
+>>> bg.integer_validator("str", None)
+Traceback (most recent call last):
+	...
+TypeError: str must be an integer
 
->>> bg.integer_validator('age', float('nan'))
-Traceback (most recent call last)
-    ...
-TypeError: age must be an integer
+Check when value is less than or equal to zero
+>>> bg.integer_validator("Silvia", -9)
+Traceback (most recent call last):
+	...
+ValueError: Silvia must be greater than 0
 
-Testing wrong value
->>> bg.integer_validator('age', -5)
-Traceback (most recent call last)
-    ...
-ValueError: age must be greater than 0
+>>> bg.integer_validator("int", 0)
+Traceback (most recent call last):
+	...
+ValueError: int must be greater than 0
 
->>> bg.integer_validator('age', 0)
-Traceback (most recent call last)
-    ...
-ValueError: age must be greater than 0
+>>> bg.integer_validator("int", [1, 2, 3])
+Traceback (most recent call last):
+	...
+TypeError: int must be an integer
 
-No arguments
+>>> bg.integer_validator("int", (1, 2))
+Traceback (most recent call last):
+	...
+TypeError: int must be an integer
+
+>>> bg.integer_validator("int", {2, 4})
+Traceback (most recent call last):
+	...
+TypeError: int must be an integer
+
+Check when value is too large (inf)
+>>> bg.integer_validator("Silvia", float("inf"))
+Traceback (most recent call last):
+	...
+TypeError: Silvia must be an integer
+
+
+Check when no argument is passed
 >>> bg.integer_validator()
-Traceback (most recent call last)
-    ...
+Traceback (most recent call last):
+	...
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
-One argument
->>> bg.integer_validator('name')
-Traceback (most recent call last)
-    ...
+Check when one argument is passed
+>>> bg.integer_validator("Silvia")
+Traceback (most recent call last):
+	...
 TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-Extra arguments
->>> bg.integer_validator('name', 34, 'eys')
-Traceback (most recent call last)
-    ...
-TypeError: integer_validator() takes 2 positional arguments but 3 were given
-
-Module docstring
->>> doc = BaseGeometry = __import__('7-base_geometry').__doc__
->>> len(doc) > 1
-True
+>>> bg.integer_validator(9)
+Traceback (most recent call last):
+	...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
