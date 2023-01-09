@@ -1,5 +1,12 @@
 #!/usr/bin/python3
-"" defines the looup(obj). """
+"""
+    0-lookup: lookup()
+"""
+
+
 def lookup(obj):
-    """ returns a list of names that are available in the specified object"""
-    return dir(obj)
+    """
+        Returns the list of available attributes and methods.
+        Args:
+            obj (object): object.
+    """
