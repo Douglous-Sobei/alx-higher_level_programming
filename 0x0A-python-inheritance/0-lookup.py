@@ -7,3 +7,4 @@
 def lookup(obj):
     """Return lst of obj attr.
     """
+    return (dir(obj))
