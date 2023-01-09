@@ -1,44 +1,51 @@
-The ``Print Sorted List`` module
-================================
+===========================
+How to use 1-my_list.py
+===========================
 
-First import ``MyList`` from the ``1-my_list`` module:
+This library only contains one function called ``print_sorted(self)``.
 
-    >>> MyList = __import__("1-my_list").MyList
+How to use
+==========
 
-Now use it:
+```print_sorted(self)``` returns sorted list
 
-    >>> a = MyList()
-    >>> a
+Importing the module from the module:
+
+	>>> MyList = __import__('1-my_list').MyList
+
+
+list empty
+	>>> my_list = MyList()
+	>>> my_list.print_sorted()
+	[]
+
+List already sorted
+    >>> my_list.sort()
+    >>> my_list.print_sorted()
     []
 
-    >>> a.append(1)
-    >>> a
-    [1]
-
-    >>> a.append(4)
-    >>> a.append(3)
-    >>> a
-    [1, 4, 3]
-
-    >>> a.print_sorted()
-    [1, 3, 4]
-
-    >>> a.append("b")
-    >>> a
-    [1, 4, 3, 'b']
-
-    >>> a.print_sorted()
+List with negative numbers
+    >>> my_list[:] = [-4, -123123, -53, -5]
+    >>> my_list.print_sorted()
+    [-123123, -53, -5, -4]
+    
+Extra arguments
+    >>> my_list.print_sorted([2, 3])
     Traceback (most recent call last):
-        ...
-    TypeError: unorderable types: str() < int()
+    ...
+    TypeError: print_sorted() takes 1 positional argument but 2 were given
+    
+Module docstring:
+       >>> m_doc = __import__('1-my_list').__doc__
+       >>> len(m_doc) > 1
+       True
 
-    >>> b = MyList()
-    >>> b.append(4)
-    >>> b.append(-2)
-    >>> b.append(0)
-    >>> b.append(3)
-    >>> b
-    [4, -2, 0, 3]
-
-    >>> b.print_sorted()
-    [-2, 0, 3, 4]
+Class docstring:
+      >>> c_doc = __import__('1-my_list').MyList.__doc__
+    >>> len(c_doc) > 1
+    True
+ 
+Method docstring:
+    >>> m_doc = __import__('1-my_list').MyList.print_sorted.__doc__
+    >>> len(m_doc) > 1
+    True
