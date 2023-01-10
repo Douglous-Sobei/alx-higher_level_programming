@@ -7,6 +7,6 @@ import json
 
 def from_json_string(my_str):
     """
-    representation by a JSON string.
+    returns an object represented by a JSON string.
     """
     return json.loads(my_str)
