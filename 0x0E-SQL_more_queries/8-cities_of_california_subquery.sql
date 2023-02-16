@@ -1,5 +1,4 @@
--- Lists all cities in the database hbtn_0d_usa.
--- Records are sorted in order of ascending cities.id.
+-- Write a script that lists all the cities of California that can be found in the database hbtn_0d_usa.
 SELECT c.`id`, c.`name`, s.`name`
   FROM `cities` AS c
        INNER JOIN `states` AS s
