@@ -3,8 +3,8 @@ function add (a, b) {
   console.log(a + b);
 }
 
-let firstArg = process.argv[3];
-let secondArg = process.argv[4];
+let firstArg = process.argv[2];
+let secondArg = process.argv[3];
 
 firstArg = parseInt(firstArg);
 secondArg = parseInt(secondArg);
