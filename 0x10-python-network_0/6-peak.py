@@ -1,33 +1,38 @@
-#!/usr/bin/python3
-"""
-    Function: find_peak(listint)
-"""
-
-
-def find_peak(listint):
+def find_peak_optimized(lst):
     """
-        finds a peak in a list of unsorted integers
-        Args:
-            listint (list)
-        Return:
-            peak
+    Find a peak in an unsorted list of integers
     """
-    listint = listint.copy()
+    length = len(lst)
 
-    length = len(listint)
-
+    # Edge cases
     if length == 0:
-        return
+        return None
+    if length == 1:
+        return lst[0]
+    if length == 2:
+        return max(lst)
 
-    # find index of element in middle
-    mid = int(length/2)
+    # Check if first or last element is a peak
+    if lst[0] > lst[1]:
+        return lst[0]
+    if lst[length - 1] > lst[length - 2]:
+        return lst[length - 1]
 
-    # compare mid index element with neighbours if they exist
-    if (mid == 0 or listint[mid - 1] <= listint[mid]) and (mid == length - 1
-                                                           or listint[mid + 1]
-                                                           < listint[mid]):
-        return listint[mid]
-    elif mid > 0 and listint[mid - 1] > listint[mid]:
-        return find_peak(listint[:mid])
-    else:
-        return find_peak(listint[mid:])
+    # Initialize variables for binary search
+    left = 1
+    right = length - 2
+
+    while left <= right:
+        mid = (left + right) // 2
+
+        if lst[mid] > lst[mid - 1] and lst[mid] > lst[mid + 1]:
+            # Found a peak
+            return lst[mid]
+        elif lst[mid - 1] > lst[mid]:
+            # Search left half
+            right = mid - 1
+        else:
+            # Search right half
+            left = mid + 1
+
+    return None
