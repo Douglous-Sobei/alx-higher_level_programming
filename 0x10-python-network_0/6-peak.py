@@ -1,29 +1,33 @@
 #!/usr/bin/python3
+"""
+    Function: find_peak(listint)
+"""
 
 
-def find_peak(list_of_integers):
+def find_peak(listint):
+    """
+        finds a peak in a list of unsorted integers
+        Args:
+            listint (list)
+        Return:
+            peak
+    """
+    listint = listint.copy()
 
-    if list_of_integers is None or len(list_of_integers) == 0:
-        return None
+    length = len(listint)
 
-    if len(list_of_integers) == 1:
-        return list_of_integers[0]
+    if length == 0:
+        return
 
-    mid_idx = int(len(list_of_integers) / 2)
+    # find index of element in middle
+    mid = int(length/2)
 
-    if mid_idx != len(list_of_integers) - 1:
-        if list_of_integers[mid_idx - 1] < list_of_integers[mid_idx] and\
-           list_of_integers[mid_idx + 1] < list_of_integers[mid_idx]:
-            return list_of_integers[mid_idx]
+    # compare mid index element with neighbours if they exist
+    if (mid == 0 or listint[mid - 1] <= listint[mid]) and (mid == length - 1
+                                                           or listint[mid + 1]
+                                                           < listint[mid]):
+        return listint[mid]
+    elif mid > 0 and listint[mid - 1] > listint[mid]:
+        return find_peak(listint[:mid])
     else:
-        if list_of_integers[mid_idx - 1] < list_of_integers[mid_idx]:
-            return list_of_integers[mid_idx]
-        else:
-            return list_of_integers[mid_idx - 1]
-
-    if list_of_integers[mid_idx - 1] > list_of_integers[mid_idx]:
-        a_list = list_of_integers[0:mid_idx]
-    else:
-        a_list = list_of_integers[mid_idx + 1:]
-
-    return find_peak(a_list)
+        return find_peak(listint[mid:])
