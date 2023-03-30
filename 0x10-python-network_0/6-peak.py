@@ -1,38 +1,27 @@
-def find_peak_optimized(lst):
-    """
-    Find a peak in an unsorted list of integers
-    """
-    length = len(lst)
+#!/usr/bin/python3
+""" Finds a peak in a list of unsorted integers
+    A peak is an Element in An array if its NOT smaller
+    than its neighbours.
+"""
 
-    # Edge cases
-    if length == 0:
+
+def find_peak(list_of_integers):
+    """ returns the a peak in a an unsored list"""
+
+    if list_of_integers == []:
         return None
-    if length == 1:
-        return lst[0]
-    if length == 2:
-        return max(lst)
 
-    # Check if first or last element is a peak
-    if lst[0] > lst[1]:
-        return lst[0]
-    if lst[length - 1] > lst[length - 2]:
-        return lst[length - 1]
+    size = len(list_of_integers)
+    if size == 1:
+        return list_of_integers[0]
+    elif size == 2:
+        return max(list_of_integers)
 
-    # Initialize variables for binary search
-    left = 1
-    right = length - 2
-
-    while left <= right:
-        mid = (left + right) // 2
-
-        if lst[mid] > lst[mid - 1] and lst[mid] > lst[mid + 1]:
-            # Found a peak
-            return lst[mid]
-        elif lst[mid - 1] > lst[mid]:
-            # Search left half
-            right = mid - 1
-        else:
-            # Search right half
-            left = mid + 1
-
-    return None
+    half = int(size / 2)
+    peak = list_of_integers[half]
+    if peak > list_of_integers[half - 1] and peak > list_of_integers[half + 1]:
+        return peak
+    elif peak < list_of_integers[half - 1]:
+        return find_peak(list_of_integers[:half])
+    else:
+        return find_peak(list_of_integers[half + 1:])
