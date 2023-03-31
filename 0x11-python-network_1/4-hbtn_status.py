@@ -3,10 +3,10 @@
 """ fetches http://alx-intranet/hbtn.io/status
     using the requests library.
 """
-import requests as req
+import requests
 
 if __name__ == "__main__":
-    request = req.get("https://alx-intranet.hbtn.io/status")
+    r = requests.get("https://alx-intranet.hbtn.io/status")
 
     print("Body response:")
     print("\t- type: {}".format(type(r.text)))
